@@ -27,6 +27,8 @@ def emergency():
     return jsonify({"message":"UF Health Shands Emergency Room / Trauma Center is located at 1515 SW Archer Road Gainesville, FL 32608. The Trauma Emergency Room is open 24 hours a day. If you have an emergency, please call 911, consult your doctor or go directly to the emergency room. ",
                     "extra":"India"}) 
 
+#  Financial 
+
 @home_bp.route('/banking/', methods = ['GET'])
 def banking():
     return jsonify({"message":"There are several banks in and outside UF Campus. This includes, Wells Fargo inside Reitz Union First floor and CHASE bank at 1340 W University Ave #20.",
@@ -40,4 +42,23 @@ def atm():
 @home_bp.route('/openaccount/', methods = ['GET'])
 def open_account():
     return jsonify({"message":"To open a new banking account, you can go to Reitz Union 655 REITZ UNION DR UF STE G1, GAINESVILLE, FL, 32611. Call them at this number to book an appointment 352-335-3314",
+                    "extra":"India"})
+
+
+# Food and drinks : Provide information about currently available food stalls and restaurants inside the campus 
+# with ability to directly place order and view menu.
+
+@home_bp.route('/drinks/', methods = ['GET'])
+def drinks():
+    return jsonify({"message":"There are manys places around the campus to get Coffee and juices, Starbucks is located at Marston Science libray, Library west library and in Health Science library. There's also Shake Smart @ Southwest Recreation Center. Go to https://dineoncampus.com/uf/ for more details",
+                    "extra":"India"}) 
+
+@home_bp.route('/restaurants/', methods = ['GET'])
+def restaurants():
+    return jsonify({"message":"Some popular options for grabbing a quick snack or lunch are Chick-fill-A @ The Hub. Food court @ Reitz Union has Panda Express, Pollo Tropical and Subway. Go to https://dineoncampus.com/uf/ for more details",
+                    "extra":"India"}) 
+
+@home_bp.route('/menu/', methods = ['GET'])
+def menu():
+    return jsonify({"message":"Each restautrants have differnt working hours and menus, Please go to, https://dineoncampus.com/uf/ to see today's menu",
                     "extra":"India"})

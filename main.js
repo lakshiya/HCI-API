@@ -22,6 +22,70 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         agent.add(`I'm sorry, can you try again?`);
     }
 
+    function bankingIntent(agent) {
+
+        const banking = agent.parameters.banking;
+
+        if (banking == 'atm') {
+
+            return axios({
+                    method: "GET",
+                    url: "http://priyalakshmi12.pythonanywhere.com/home/atm/",
+                    data: "",
+                })
+                .then((response) => {
+                    var message = response.data.message;
+                    console.log("This is a test");
+                    console.log(response.data);
+                    console.log("End is a test");
+                    agent.add(`${message}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
+        if (banking == 'banking') {
+
+            return axios({
+                    method: "GET",
+                    url: "http://priyalakshmi12.pythonanywhere.com/home/banking/",
+                    data: "",
+                })
+                .then((response) => {
+                    var message = response.data.message;
+                    console.log("This is a test");
+                    console.log(response.data);
+                    console.log("End is a test");
+                    agent.add(`${message}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
+        if (banking == 'new account') {
+
+            return axios({
+                    method: "GET",
+                    url: "http://priyalakshmi12.pythonanywhere.com/home/openaccount/",
+                    data: "",
+                })
+                .then((response) => {
+                    var message = response.data.message;
+                    console.log("This is a test");
+                    console.log(response.data);
+                    console.log("End is a test");
+                    agent.add(`${message}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
+    }
+    // PRIYA - Medical Intent
+
     function medicalIntent(agent) {
 
         const health = agent.parameters.health;
@@ -263,7 +327,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     //code by Shanmukh ----->
     //health
     intentMap.set('Health Intent', healthIntent);
+    // PRIYA
     // WORKS
     intentMap.set('Medical intent', medicalIntent);
+    intentMap.set('Banking Intent', bankingIntent);
     agent.handleRequest(intentMap);
 });
