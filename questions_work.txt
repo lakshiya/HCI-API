@@ -1,0 +1,59 @@
+Questions that work 
+
+Banking 
+Any atm near me
+banks near me
+I want to create a new account
+
+Health
+
+Where is the emergency room
+Are there any wellness centre nearby
+UF's medical buildings info
+
+Food
+
+I want to grab a coffee
+I would like to go to a restaurant
+What is on the menu
+
+Housing
+May I know about a residence hall with private bathroom?
+
+Campus
+
+Where are study rooms in Norman Library?
+
+Printers
+
+Where can I find printers on campus?
+Where can i find printer in marston?
+
+Course
+When is the final exam of course ADS?
+What is the drop deadline of course ADS?
+
+Are there any social events today?
+
+
+APIs
+
+http://priyalakshmi12.pythonanywhere.com/
+
+Medical 
+
+http://priyalakshmi12.pythonanywhere.com/home/wellness/
+http://priyalakshmi12.pythonanywhere.com/home/emergency/
+http://priyalakshmi12.pythonanywhere.com/home/medical/
+
+Banking
+
+http://priyalakshmi12.pythonanywhere.com/home/banking/
+http://priyalakshmi12.pythonanywhere.com/home/openaccount/
+http://priyalakshmi12.pythonanywhere.com/home/atm/
+
+Food
+http://priyalakshmi12.pythonanywhere.com/home/restaurants/
+http://priyalakshmi12.pythonanywhere.com/home/drinks/
+http://priyalakshmi12.pythonanywhere.com/home/menu/
+
