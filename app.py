@@ -10,5 +10,5 @@ app.register_blueprint(contact_bp, url_prefix='/contact')
 
 
 if __name__ == '__main__':
-    app.run(host='priyalakshmi12.pythonanywhere.com',port=5000)
-    # app.run(host='0.0.0.0', port=105)
+    # app.run(host='priyalakshmi12.pythonanywhere.com',port=5000)
+    app.run(host='0.0.0.0', port=105)
