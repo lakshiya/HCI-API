@@ -50,7 +50,7 @@ def open_account():
 
 @home_bp.route('/drinks/', methods = ['GET'])
 def drinks():
-    return jsonify({"message":"There are manys places around the campus to get Coffee and juices, Starbucks is located at Marston Science libray, Library west library and in Health Science library. There's also Shake Smart @ Southwest Recreation Center. Go to https://dineoncampus.com/uf/ for more details",
+    return jsonify({"message":"There are manys places around the campus to get Coffee and juices, Starbucks is located at Marston Science libray, Library West and in Health Science library. There's also Shake Smart @ Southwest Recreation Center. Go to https://dineoncampus.com/uf/ for more details",
                     "extra":"India"}) 
 
 @home_bp.route('/restaurants/', methods = ['GET'])
