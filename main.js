@@ -22,6 +22,65 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         agent.add(`I'm sorry, can you try again?`);
     }
 
+    function foodIntent(agent) {
+        const food = agent.parameters.food;
+
+        if (food == 'lunch' || food == 'restaurants' || food == 'food') {
+
+            return axios({
+                    method: "GET",
+                    url: "http://priyalakshmi12.pythonanywhere.com/home/restaurants/",
+                    data: "",
+                })
+                .then((response) => {
+                    var message = response.data.message;
+                    console.log("This is a test");
+                    console.log(response.data);
+                    console.log("End is a test");
+                    agent.add(`${message}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+        if (food == 'coffee' || food == 'starbucks' || food == 'drink') {
+
+            return axios({
+                    method: "GET",
+                    url: "http://priyalakshmi12.pythonanywhere.com/home/drinks/",
+                    data: "",
+                })
+                .then((response) => {
+                    var message = response.data.message;
+                    console.log("This is a test");
+                    console.log(response.data);
+                    console.log("End is a test");
+                    agent.add(`${message}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+        if (food == 'menu' || food == 'open now' || food == 'dining' || food == 'food menu') {
+
+            return axios({
+                    method: "GET",
+                    url: "http://priyalakshmi12.pythonanywhere.com/home/menu/",
+                    data: "",
+                })
+                .then((response) => {
+                    var message = response.data.message;
+                    console.log("This is a test");
+                    console.log(response.data);
+                    console.log("End is a test");
+                    agent.add(`${message}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+    }
+
     function bankingIntent(agent) {
 
         const banking = agent.parameters.banking;
@@ -331,5 +390,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     // WORKS
     intentMap.set('Medical intent', medicalIntent);
     intentMap.set('Banking Intent', bankingIntent);
+    intentMap.set('Food Intent', foodIntent);
     agent.handleRequest(intentMap);
 });
