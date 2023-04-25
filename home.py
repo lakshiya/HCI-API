@@ -3,4 +3,4 @@ home_bp = Blueprint('home', __name__)
 
 @home_bp.route('/hello/')
 def hello():
-    return "Hello from Home Page"
+    return "Hello from Home Page, this is response from FLASK"
