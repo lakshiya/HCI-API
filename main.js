@@ -22,37 +22,15 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         agent.add(`I'm sorry, can you try again?`);
     }
 
-    //health
-    function healthIntent(agent) {
-        //Here we get the type of the utterance
+    function medicalIntent(agent) {
+
         const health = agent.parameters.health;
-        const insurance = agent.parameters.insurance;
 
-        //New question added
-        if (health == 'health' && insurance == 'insurance') {
-            return axios({
-                    method: "GET",
-                    url: "https://campusmap.ufl.edu/library/cmapjson/health.json",
-                    data: "",
-                })
-                .then((response) => {
-                    var json = response.data.features;
-
-                    var info = json[0].properties.DESCRIPTION;
-
-                    console.log("This is a test");
-                    agent.add(`This is health info ${info}`);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        }
-
-        if (health == 'medical') {
+        if (health == 'wellness') {
 
             return axios({
                     method: "GET",
-                    url: "http://priyalakshmi12.pythonanywhere.com/home/hello/",
+                    url: "http://priyalakshmi12.pythonanywhere.com/home/wellness/",
                     data: "",
                 })
                 .then((response) => {
@@ -60,14 +38,80 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                     console.log("This is a test");
                     console.log(response.data);
                     console.log("End is a test");
-                    agent.add(`Getting the value from pythonanywhere  ${message}`);
+                    agent.add(`${message}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
+        if (health == 'emergency') {
+
+            return axios({
+                    method: "GET",
+                    url: "http://priyalakshmi12.pythonanywhere.com/home/emergency/",
+                    data: "",
+                })
+                .then((response) => {
+                    var message = response.data.message;
+                    console.log("This is a test");
+                    console.log(response.data);
+                    console.log("End is a test");
+                    agent.add(`${message}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+        if (health == 'medical') {
+
+            return axios({
+                    method: "GET",
+                    url: "http://priyalakshmi12.pythonanywhere.com/home/medical/",
+                    data: "",
+                })
+                .then((response) => {
+                    var message = response.data.message;
+                    console.log("This is a test");
+                    console.log(response.data);
+                    console.log("End is a test");
+                    agent.add(`${message}`);
                 })
                 .catch((error) => {
                     console.log(error);
                 });
 
         }
+
     }
+
+    //health
+    function healthIntent(agent) {
+        const health = agent.parameters.health;
+        const insurance = agent.parameters.insurance;
+
+        if (health == 'health' && insurance == 'insurance') {
+            return axios({
+                    method: 'GET',
+                    url: 'https://campusmap.ufl.edu/library/cmapjson/health.json',
+                    data: '',
+                })
+                .then((response) => {
+                    const json = response.data.features;
+                    const info = json[0].properties.DESCRIPTION;
+
+                    console.log('This is a test');
+                    agent.add(`This is health info: ${info}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    agent.add('Sorry, there was an error processing your request.');
+                });
+        } else {
+            agent.add('Sorry, I did not understand your request.');
+        }
+    }
+
 
     //<----code by Abhiram
     function studyRoomIntent(agent) {
@@ -212,10 +256,14 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     intentMap.set('Default Fallback Intent', fallback);
     intentMap.set('Race Intent', race);
     //<---- code by Shanmukh
+    // WORKS
     intentMap.set('Pantry Intent', pantryIntent);
+    // WORKS
     intentMap.set('StudyRoom Intent', studyRoomIntent);
     //code by Shanmukh ----->
     //health
     intentMap.set('Health Intent', healthIntent);
+    // WORKS
+    intentMap.set('Medical intent', medicalIntent);
     agent.handleRequest(intentMap);
 });
